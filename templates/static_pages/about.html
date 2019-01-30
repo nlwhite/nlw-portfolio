@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Nicole White | About</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/nlw.css' %}">
+
+    <!-- FontAwesome for search icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+
+  </head>
+
+  <body>
+    <div id="preloader">
+       <div id="status">&nbsp;</div>
+    </div>
+    
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="/../">• NLW •</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+
+          <li class="nav-item">
+            <a class="nav-link" href="/../">Portfolio <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/skills/">Skills</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="subheader">
+
+      <span class="leftalign">
+         <h5 class="port_title">ABOUT</h5>
+      </span>
+
+      <span class="rightalign">
+        <form class="form-inline my-2 my-lg-0">
+          <button class="searchbutton" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+          <input class="myform" type="text" placeholder="Search" aria-label="Search">
+        </form>
+      </span>
+
+    </div>
+    <main role="main">
+
+      <section class="jumbotron text-center">
+
+        <div id="wrap" class="text-muted">
+
+            <h4 class='jumbotron-heading'>About the Portfolio</h4>
+            This website showcases <b>GIS, computer programming,</b> and <b>cartographic design</b> projects I've undertaken during my studies and work. I am currently a student at the <b>Centre of Geographic Sciences</b> in Nova Scotia, an <a href="https://ecce.esri.ca/wpecce/">Esri Centre of Excellence</a>, where learners are trained to produce exemplary cartographic products. I've also worked for the municipal government as a GIS technician.
+<br/><br/>
+<h4 class='jumbotron-heading'>About Me</h4>
+In my previous lives I've worked for a tech company, where I supervised a team of analysts responsible for identifying and reporting serious risks to major worldwide brands <a href="http://www.bbc.com/capital/story/20160503-meet-the-people-who-see-nearly-everything-we-post-online">on the Internet</a>. I've also worked within the environmental sciences department of a university, where I was responsible for both interpretive work, educating the public about our local <a href="https://botanicalgardens.acadiau.ca/9276.html">Acadian Forest</a> ecology, and lab work including tissue culture propagation of at-risk native plant species. In my free time, I like to go rock climbing or long-distance cycling.
+ <br/><br/>
+<h4 class='jumbotron-heading'>About the Website</h4>
+ The website is a portfolio piece in and of itself: I redesigned it in December 2018 as an opportunity to further my technical skills, leaving behing my old Wordpress site and creating the new version using the open-source web development framework Django. I did this in anticipation of learning <b>GeoDjango</b> for the creation of web maps. Along the way, I brushed up on my CSS and HTML skills, and gained a better understanding of website security protocol options.
+<br/><br/>
+ In the interest of creating a simple but professional Django web application at a low cost, I used a very inexpensive shared hosting plan to host the site. Because shared hosting doesn't grant the user administrative access to the server, I created a <b>Python 3.6</b> virtual environment in which to install Django (which is built in Python) and other libraries, giving me access to this functionality without needing to purchase dedicated server space. Similarly, SQLite was chosen over the industry-standard <b>PostgreSQL</b> as a lightweight alternative that did not require the purchase of any further services from my web host.
+<br/><br/>
+ Django was used to automate some of the repetitive work of web design, producing a simple and efficient web application to display my portfolio information. To do this, information pertaining to each portfolio piece is stored as attribute data within <b>SQLite</b> database tables. These are retrieved dynamically whenever someone views the site, using server-side Python scripts served by Apache. which runs on the CloudLinux operating system where the site is hosted.
+<br/><br/>
+ The <b>Bootstrap</b> front-end development framework was used to provide <b>CSS and Javascript</b> templates, resulting in a website with a consistent interface and graphic design, configured for display on both desktop and mobile screens.
+<br/><br/>
+ To ensure that login information remained secure, I obtained SSL certification from <a href="https://letsencrypt.org/">Let's Encrypt</a>, a free service offered by the <a href="https://www.eff.org/">Electronic Frontier Foundation</a>. On a shared hosting plan offering no integrated support for Let's Encrypt, this required performing an http challenge, followed by manually generating the certificate information using their Linux utility and updating my domain's settings accordingly.
+          </p>
+        </div>
+      </section>
+
+
+
+      <p>
+      <a href="/../" class="btn btn-primary my-2">Back</a>
+    </p>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+<br />
+      </div>
+    </footer>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'jquery-3.3.1.min.js' %}" ></script>
+    <script src="{% static 'js/bootstrap.js' %}" ></script>
+    <script src="{% static 'js/preloader.js' %}" ></script>
+
+    </body>
+</html>

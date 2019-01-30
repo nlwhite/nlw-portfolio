@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+
+
+
+{% load static %}
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Nicole White: {{ piece_info.title }}</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/nlw.css' %}">
+
+    <!-- FontAwesome for search icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+
+  </head>
+
+  <body>
+
+    <div id="preloader">
+       <div id="status">&nbsp;</div>
+    </div>
+
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+      <a class="navbar-brand" href="/../">• NLW •</a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/../">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/skills/">Skills</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about/">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact/">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="subheader">
+
+      <span class="leftalign">
+         <h5 class="port_title">{{ piece_info.title|upper }}</h5>
+      </span>
+
+      <span class="rightalign">
+        <form class="form-inline my-2 my-lg-0">
+          <button class="searchbutton" type="submit">
+            <i class="fa fa-search"></i>
+          </button>
+          <input class="myform" type="text" placeholder="Search" aria-label="Search">
+        </form>
+      </span>
+
+    </div>
+
+    <main role="main">
+
+<section class="jumbotron text-center">
+
+
+<div class="introcontainer">
+  <p class="text-muted">{{ piece_info.date_created }}</p>
+  {% if piece_info.intro_text %}
+  <p class="text-muted">{{ piece_info.intro_text|safe }}</p>
+  {% endif %}
+</div>
+{% for piece_item in piece_items %}
+
+  <!-- If there is more than one piece in this portfolio item, display a title
+  for each. Else just display the main title -->
+  {% if piece_items.all|length > 1 %}
+    <h5 class="port_item_title" style="text-align: left;">{{ piece_item.title }}</h5>
+  {% endif %}
+
+  <p class="lead text-muted">{{ piece_item.date_created }}</p>
+
+  <!-- If there is intro text, display it first -->
+
+
+  <!-- If this piece has accompanying text, display the image on the left and
+  text on the right. Else just display the image centered -->
+  {% if piece_item.summary %}
+    <div class="detailcontainer">
+      <span class="detailimage">
+        <img src = "{{ piece_item.image_med.url }}" width=600></img>
+
+        <!-- If a download file is specified, give a link and info -->
+        {% if piece_item.file_to_download %}
+
+          <br /><a href="{{ piece_item.file_to_download.url }}" target="_blank">
+            Download full size</a> ({{ piece_item.piece_print_size }},
+            {{ piece_item.piece_file_size }}, {{ piece_item.file_format }})
+
+        {% endif %}
+
+        {% if piece_item.external_link %}
+        <br />
+        Launch:
+        <a href="{{ piece_item.external_link }}" target="_blank">
+          {{ piece_item.title}}
+        </a>
+        {% endif %}
+
+
+      </span>
+        <span class="detailtext">
+          <p class="text-muted">
+          {{ piece_item.summary|safe }}
+        </p>
+        </span>
+        </div>
+
+
+  {% else %}
+        <div class="container">
+        <img src="{{ piece_item.image_med.url }}" width=600px></img>
+        </div>
+
+        <!-- If a download file is specified, give a link and info -->
+        {% if piece_item.file_to_download %}
+
+          <br /><a href="{{ piece_item.file_to_download.url }}" target="_blank">
+            Download full size</a> ({{ piece_item.piece_print_size }},
+            {{ piece_item.piece_file_size }}, {{ piece_item.file_format }})
+
+        {% endif %}
+
+        {% if piece_item.external_link %}
+        <br />
+        Launch:
+        <a href="{{ piece_item.external_link }}" target="_blank">
+          {{ piece_item.title}}
+        </a>
+        {% endif %}
+
+  {% endif %}
+
+
+
+
+
+
+
+  <br /><br /><br />
+{% endfor %}
+</section>
+
+      <div id="wrap">
+        <p class = "text-muted">
+          {{ piece_info.full_text|safe }}
+        </p>
+      </div>
+
+      <p>
+      <a href="/../" class="btn btn-primary my-2">Back</a>
+    </p>
+
+    </main>
+    <footer class="footer">
+      <div class="container">
+<br />
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="{% static 'jquery-3.3.1.min.js' %}" ></script>
+    <script src="{% static 'js/bootstrap.js' %}" ></script>
+    <script src="{% static 'js/preloader.js' %}" ></script>
+
+    </body>
+</html>
